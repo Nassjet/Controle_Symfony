@@ -37,10 +37,10 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/parcours, roles: ROLE_USER }
-        - { path: ^/etape, roles: ROLE_USER }
-        - { path: ^/ressource, roles: ROLE_USER}
-        - { path: ^/messages, roles: IS_AUTHENTICATED_FULLY }
+        # - { path: ^/parcours, roles: ROLE_USER }
+        # - { path: ^/etape, roles: ROLE_USER }
+        # - { path: ^/ressource, roles: ROLE_USER}
+        # - { path: ^/messages, roles: IS_AUTHENTICATED_FULLY }
 
 
 

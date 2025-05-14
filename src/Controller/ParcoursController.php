@@ -44,13 +44,13 @@ final class ParcoursController extends AbstractController
     }
 
     #[Route('/parcours/{id}', name: 'app_parcours_show')]
-    #[IsGranted('ROLE_USER')]
+    // #[IsGranted('ROLE_USER')]
     public function show(Parcours $parcours): Response
     {
         // Vérifie que l'utilisateur a le droit d'accéder à ce parcours
-        if ($parcours->getUser() !== $this->getUser()) {
-            throw $this->createAccessDeniedException();
-        }
+        // if ($parcours->getUser() !== $this->getUser()) {
+        //     throw $this->createAccessDeniedException();
+        // }
 
         return $this->render('parcours/show.html.twig', [
             'parcours' => $parcours,

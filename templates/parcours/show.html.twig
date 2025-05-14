@@ -11,15 +11,13 @@
                 <tr>
                     <th>#</th>
                     <th>Intitulé</th>
-                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 {% for etape in parcours.etapes %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ etape.intitule }}</td>
-                        <td>{{ etape.description }}</td>
+                        <td>{{ etape.descriptif }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
