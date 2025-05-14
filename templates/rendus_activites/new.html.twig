@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RendusActivites{% endblock %}
+
+{% block body %}
+    <h1>Create new RendusActivites</h1>
+
+    {{ include('rendus_activites/_form.html.twig') }}
+
+    <a href="{{ path('app_rendus_activites_index') }}">back to list</a>
+{% endblock %}

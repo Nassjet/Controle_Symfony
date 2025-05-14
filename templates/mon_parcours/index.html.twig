@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Parcours{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h2>Mon parcours</h2>
+
+        {% for etape in etapes %}
+            <div class="card my-3">
+                <div class="card-header bg-light">
+                    <strong>{{ etape.nom }}</strong>
+                </div>
+                <div class="card-body">
+                    {# Lien vers la dernière version du rendu #}
+                    {% set rendus = etape.rendusActivites|filter(r => r.user == app.user) %}
+                    {% set dernier = rendus|last %}
+
+                    {% if dernier %}
+                        <p>Dernier rendu :
+                            <a href="{{ asset(dernier.url) }}" target="_blank">Télécharger</a>
+                        </p>
+
+                        {# Lien vers le message s'il existe #}
+                        {% if dernier.messages|length > 0 %}
+                            <p>Message associé :
+                                <a href="{{ path('app_messages_show', {id: dernier.messages|first.id}) }}">
+                                    Voir le message
+                                </a>
+                            </p>
+                        {% endif %}
+                    {% else %}
+                        <p>Aucun rendu encore envoyé.</p>
+                    {% endif %}
+
+                    {# Formulaire d'upload #}
+                    <form method="post" action="{{ path('app_rendu_upload', {id: etape.id}) }}" enctype="multipart/form-data">
+                        <div class="mb-2">
+                            <input type="file" name="rendu_file" required class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Envoyer mon rendu</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RendusActivites index{% endblock %}
+
+{% block body %}
+    <h1>RendusActivites index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>DateHeure</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rendus_activite in rendus_activites %}
+            <tr>
+                <td>{{ rendus_activite.id }}</td>
+                <td>{{ rendus_activite.url }}</td>
+                <td>{{ rendus_activite.dateHeure ? rendus_activite.dateHeure|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_rendus_activites_show', {'id': rendus_activite.id}) }}">show</a>
+                    <a href="{{ path('app_rendus_activites_edit', {'id': rendus_activite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rendus_activites_new') }}">Create new</a>
+{% endblock %}

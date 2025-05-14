@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit RendusActivites{% endblock %}
+
+{% block body %}
+    <h1>Edit RendusActivites</h1>
+
+    {{ include('rendus_activites/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_rendus_activites_index') }}">back to list</a>
+
+    {{ include('rendus_activites/_delete_form.html.twig') }}
+{% endblock %}

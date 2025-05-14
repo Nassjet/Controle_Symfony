@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Parcours : {{ parcours.objet }}</h1>
+
+    {% if parcours.etapes is empty %}
+        <div class="alert alert-info">Aucune étape pour ce parcours.</div>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Intitulé</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etape in parcours.etapes %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ etape.intitule }}</td>
+                        <td>{{ etape.description }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <a href="{{ path('app_parcours_index') }}" class="btn btn-secondary">
+        Retour à la liste
+    </a>
+{% endblock %}

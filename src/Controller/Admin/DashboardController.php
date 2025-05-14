@@ -10,10 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
 use App\Controller\Admin\UserCrudController; // 🔁 Ajouté
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
+    // #[IsGranted('ROLE_ADMIN')]
     public function index(): Response
     {
         // Redirection vers le CRUD des utilisateurs
